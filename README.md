@@ -1,95 +1,94 @@
-# Assistant-IA-pour-Interrogation-de-Fichier-M-dical-Excel
+# Assistant IA pour interroger un fichier médical Excel
 
-Un assistant interactif conçu pour répondre à des questions médicales en langage naturel à partir d’un fichier Excel structuré.
-🧑‍💻 Auteur : Blaise MUHALA
+Petit projet perso pour poser des questions en langage naturel sur un fichier Excel médical, et obtenir une réponse basée uniquement sur ces données.
 
-🎯 Objectif
-Ce projet démontre comment utiliser l’API GPT-4 d’OpenAI pour interagir avec des données médicales contenues dans un fichier Excel. L’utilisateur peut poser une question (ex : Quels sont les traitements du paludisme ?) et obtenir une réponse intelligente directement extraite des données.
+Auteur : Blaise MUHALA
 
-🛠️ Technologies utilisées
-Python 3.8+
+## L’idée
 
-Bibliothèques :
+On a un tableau Excel (maladies, symptômes, traitements). Au lieu de chercher à la main, on pose une question comme « Quels sont les traitements du paludisme ? » et GPT-4 répond à partir du contenu du fichier.
 
-openai
+Rien de plus : pas d’invention hors tableau, juste une lecture intelligente des données.
 
-pandas
+## Stack
 
-openpyxl
+- Python 3.8+
+- `openai`, `pandas`, `openpyxl`
+- API OpenAI (GPT-4)
 
-API utilisée : OpenAI GPT-4
+## Comment ça marche
 
-🚀 Fonctionnement du script
-Génère automatiquement un fichier data.xlsx contenant un tableau médical fictif.
+1. Le script crée un `data.xlsx` avec quelques lignes d’exemple.
+2. Il lit le fichier et le transforme en texte.
+3. Il envoie ta question + ces données à GPT-4.
+4. Tu reçois une réponse claire, calée sur le tableau.
 
-Lit ce fichier et le convertit en texte.
+## Structure
 
-Envoie une question de l’utilisateur + les données au modèle GPT.
-
-Affiche une réponse claire basée uniquement sur les données du fichier Excel.
-
-📁 Structure du projet
-bash
-Copier
-Modifier
+```
 /medbot/
-├── main.py          # Script principal
-├── data.xlsx        # Fichier généré automatiquement (maladies, symptômes, traitements)
-└── README.md        # Fichier d’explication
-▶️ Exemple de question
-text
-Copier
-Modifier
+├── main.py      # script principal
+├── data.xlsx    # généré au lancement (maladies, symptômes, traitements)
+└── README.md
+```
+
+## Exemple
+
+Question :
+
+```
 Quels sont les symptômes du paludisme ?
-Réponse attendue de l’IA :
+```
 
+Réponse typique :
+
+```
 Les symptômes du paludisme sont : fièvre, frissons.
+```
 
-🧪 Lancer le script
-Ouvre ton terminal
+## Installation
 
-Exécute le script :
-
-bash
-Copier
-Modifier
-python main.py
-Saisis une question comme :
-
-text
-Copier
-Modifier
-Quels sont les traitements pour la grippe ?
-L’IA te répond en analysant le fichier data.xlsx.
-
-📦 Installation des dépendances
-Avant de lancer, installe les bibliothèques nécessaires :
-
-bash
-Copier
-Modifier
+```bash
 pip install openai pandas openpyxl
-🔒 Attention à la clé API
-N’oublie pas de remplacer ta clé API personnelle dans le fichier main.py :
+```
 
-python
-Copier
-Modifier
+## Lancer
+
+```bash
+python main.py
+```
+
+Ensuite, tape ta question, par exemple :
+
+```
+Quels sont les traitements pour la grippe ?
+```
+
+L’IA répond en s’appuyant sur `data.xlsx`.
+
+## Clé API
+
+Dans `main.py`, remplace la clé par la tienne :
+
+```python
 client = openai.OpenAI(api_key="ta-clé-api-ici")
-💡 Améliorations futures (TODO)
-Ajouter une interface graphique (ex : avec Flask ou Tkinter)
+```
 
-Permettre l’upload de fichiers Excel personnalisés
+Sans ça, rien ne tourne.
 
-Ajouter un historique des questions
+## Idées pour la suite
 
-Ajouter la traduction multilingue
+- Une vraie interface (Flask ou Tkinter)
+- Pouvoir uploader son propre Excel
+- Garder un historique des questions
+- Support multilingue
+- Brancher des données médicales réelles (avec un vrai contrôle qualité)
 
-Intégration avec des données médicales réelles (avec contrôle qualité)
+## Versions
 
-🗃️ Historique
-v1.0 – Version console fonctionnelle avec données fictives
+- **v1.0** — console, données fictives, ça marche
+- À venir — version web ou API REST
 
-À venir – Version web ou API REST
+---
 
-🖋️ Rédigé par Blaise MUHALA – Libre à l’usage et à l’amélioration
+Blaise MUHALA — libre d’usage et d’amélioration.
